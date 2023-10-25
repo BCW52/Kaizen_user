@@ -37,6 +37,8 @@ jobs:
           cd ${{ github.workspace }}/
           flutter clean
           flutter pub get
+          flutter doctor -v
+          flutter doctor
           rm pubspec.lock
           flutter build apk --release --verbose
 
