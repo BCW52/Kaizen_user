@@ -47,6 +47,9 @@ dependencies:
   mobx: ^2.1.4
   flutter_mobx: ^2.0.6+5
 
+dependency_overrides:
+  characters: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
