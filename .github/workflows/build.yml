@@ -25,9 +25,7 @@ jobs:
           distribution: 'adopt'
       - name: Set up Flutter
         run: |
-          curl -o flutter_install.sh https://raw.githubusercontent.com/BCW52/Kaizen/main/install_flutter.sh
-          chmod +x flutter_install.sh
-          ./flutter_install.sh
+          sudo snap refresh flutter --channel=2.5.2/stable
         working-directory: ${{ github.workspace }}
         env:
           FLUTTER_HOME: ${{ github.workspace }}/flutter
