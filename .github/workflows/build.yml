@@ -35,7 +35,11 @@ jobs:
       - name: Build APK
         run: |
           cd ${{ github.workspace }}/
-          flutter build apk
+          flutter clean
+          flutter pub get
+          rm pubspec.lock
+          flutter build apk --release --verbose
+
         working-directory: ${{ github.workspace }}
 
 
