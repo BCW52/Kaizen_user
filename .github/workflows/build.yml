@@ -35,8 +35,7 @@ jobs:
       - name: Build APK
         run: |
           cd ${{ github.workspace }}/
-          flutter --disable-telemetry
-          flutter build apk --debug
+          flutter build apk
         working-directory: ${{ github.workspace }}
 
 
