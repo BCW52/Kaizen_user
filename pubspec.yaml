@@ -1,19 +1,19 @@
-name: Kaizen VPN
-description: Zen G Next Gen VPN
+name: mightyvpn
+description: A new Flutter project.
 
 publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.10.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.5
-  nb_utils: ^5.0.8
+  nb_utils: ^5.0.6
   flutter_vector_icons: ^2.0.0
   image_picker: ^0.8.7+1
   cached_network_image: ^3.2.3
@@ -54,6 +54,7 @@ dev_dependencies:
   mobx_codegen: ^2.1.1
   #flutter packages pub run build_runner build --delete-conflicting-outputs
 
+
 flutter:
   uses-material-design: true
 
@@ -61,3 +62,4 @@ flutter:
     - assets/images/
     - assets/opvn/
     - assets/flag/
+

@@ -28,14 +28,6 @@ jobs:
           curl -o flutter_install.sh https://raw.githubusercontent.com/BCW52/Kaizen/main/install_flutter.sh
           chmod +x flutter_install.sh
           ./flutter_install.sh
-          flutvar=`flutter --version`
-          echo $flutvar
-          TEST=$(pwd)
-          echo $TEST
-          cd /home/runner/snap/flutter/common/flutter
-          git checkout 2.10.5
-          flutvar=`flutter --version`
-          echo $flutvar
 
         working-directory: ${{ github.workspace }}
         env:
