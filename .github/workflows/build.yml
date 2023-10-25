@@ -33,10 +33,10 @@ jobs:
           TEST=$(pwd)
           echo $TEST
           cd /home/runner/snap/flutter/common/flutter
-          git checkout 2.5.2
+          git checkout 2.8.0
           flutvar=`flutter --version`
           echo $flutvar
-          
+
         working-directory: ${{ github.workspace }}
         env:
           FLUTTER_HOME: ${{ github.workspace }}/flutter
