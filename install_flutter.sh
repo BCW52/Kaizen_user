@@ -4,7 +4,7 @@
 FLUTTER_INSTALL_DIR="$HOME/development"
 
 # URL for the Flutter SDK tar.xz file
-FLUTTER_SDK_URL="https://github.com/flutter/flutter/archive/refs/tags/2.8.0.tar.gz"
+FLUTTER_SDK_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.10.5-stable.tar.xz"
 
 # Install Flutter
 if ! command -v flutter &> /dev/null; then

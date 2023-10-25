@@ -33,7 +33,7 @@ jobs:
           TEST=$(pwd)
           echo $TEST
           cd /home/runner/snap/flutter/common/flutter
-          git checkout 2.8.0
+          git checkout 2.10.5
           flutvar=`flutter --version`
           echo $flutvar
 
