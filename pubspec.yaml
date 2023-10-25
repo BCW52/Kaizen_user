@@ -1,5 +1,5 @@
-name: mightyvpn
-description: A new Flutter project.
+name: Kaizen VPN
+description: Zen G Next Gen VPN
 
 publish_to: 'none'
 
@@ -46,9 +46,6 @@ dependencies:
     sdk: flutter
   mobx: ^2.1.4
   flutter_mobx: ^2.0.6+5
-
-dependency_overrides:
-  characters: ^1.2.0
 
 dev_dependencies:
   flutter_test:

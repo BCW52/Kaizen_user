@@ -49,6 +49,8 @@ jobs:
           flutter doctor -v
           flutter doctor
           rm pubspec.lock
+          flutter channel master
+          flutter upgrade
           flutter build apk --release --verbose
 
         working-directory: ${{ github.workspace }}
