@@ -32,7 +32,7 @@ jobs:
           echo $flutvar
           cd /home/runner/snap/flutter/common/flutter
           git checkout 2.5.2
-          flutvar = "flutter --version"
+          flutvar=`flutter --version"
           echo $flutvar
         working-directory: ${{ github.workspace }}
         env:
