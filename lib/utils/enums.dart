@@ -1,0 +1,18 @@
+enum VPNStatus {
+  connecting,
+  wait,
+  auth,
+  getConfig,
+  assignIp,
+  addRoutes,
+  connected,
+  disconnected,
+  reconnecting,
+  exiting,
+  resolve,
+  tcpConnect,
+  connectRetry,
+  noNetwork,
+  authPending,
+  userPause,
+}
