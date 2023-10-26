@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mightyvpn/component/circle_painter.dart';
-import 'package:mightyvpn/main.dart';
 import 'package:mightyvpn/utils/colors.dart';
-import 'package:mightyvpn/utils/enums.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class VpnComponent extends StatefulWidget {
@@ -10,7 +8,8 @@ class VpnComponent extends StatefulWidget {
   final Function()? onStartTapped;
   final Function()? onTapped;
 
-  const VpnComponent({Key? key, this.vpnStatus = false, required this.onStartTapped, required this.onTapped}) : super(key: key);
+  const VpnComponent({Key? key, this.vpnStatus = false, required this.onStartTapped, required this.onTapped})
+      : super(key: key);
 
   @override
   State<VpnComponent> createState() => _VpnComponentState();
@@ -56,9 +55,8 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     if (_controller != null) {
-      _scale = 1 - _controller!.value;
+      _scale = 1 - (_controller!.value ?? 0.0);
     }
-
     if (widget.vpnStatus) {
       return Listener(
         onPointerDown: (details) {
@@ -92,7 +90,6 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         ),
       );
     }
-
     return Listener(
       onPointerDown: (details) {
         _controller?.forward();
@@ -101,4 +98,25 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         _controller?.reverse();
       },
       child: Transform.scale(
-        scale:
+        scale: _scale,
+        child: GestureDetector(
+          onTap: widget.onStartTapped!,
+          child: Container(
+            padding: const EdgeInsets.all(32),
+            decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
+            child: Column(
+              children: [
+                const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
+                Text(getStatus(vpnStore.vpnStatus != VPNStatus.disconnected), style: boldTextStyle(color: primaryColor, size: 18)),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  String getStatus(bool val) {
+    return val ? 'Stop' : 'Start';
+  }
+}

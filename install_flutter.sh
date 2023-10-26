@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the installation directory
-FLUTTER_INSTALL_DIR="$HOME/development"
+FLUTTER_INSTALL_DIR="$HOME"
 
 # URL for the Flutter SDK tar.xz file
 FLUTTER_SDK_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.2-stable.tar.xz"
@@ -28,7 +28,7 @@ fi
 
 # Check if Flutter is in the PATH for all future sessions
 if ! grep -q "flutter/bin" "$HOME/.bashrc"; then
-echo 'export PATH="$PATH:'"`pwd`/flutter/bin"'"' >> "$HOME/.bashrc"
+  echo 'export PATH="$PATH:$HOME/flutter/bin"' >> "$HOME/.bashrc"
 
   echo "PATH updated for all future sessions."
 fi
@@ -36,17 +36,7 @@ fi
 # Print installation instructions
 echo "Please review the Flutter installation instructions at:"
 echo "https://flutter.dev/docs/get-started/install/linux"
-if ! command -v flutter &> /dev/null; then
-  echo "Flutter not found. Installing..."
-else
-  sudo apt install snapd
-  sudo systemctl enable snapd
-  sudo systemctl start snapd
-  sudo snap install flutter --classic
-fi
-  echo "Flutter installation completed."
 
-  #!/bin/bash
 
 # Set Gradle version and distribution URL
 GRADLE_VERSION="7.0.2"
