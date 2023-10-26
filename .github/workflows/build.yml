@@ -50,6 +50,8 @@ jobs:
           rm pubspec.lock
           flutter channel beta
           flutter upgrade
+          flutter analyze
+          flutter pub upgrade
           flutter build apk --release --verbose
 
         working-directory: ${{ github.workspace }}

@@ -45,3 +45,36 @@ else
   sudo snap install flutter --classic
 fi
   echo "Flutter installation completed."
+
+  #!/bin/bash
+
+# Set Gradle version and distribution URL
+GRADLE_VERSION="7.0.2"
+GRADLE_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+
+# Set installation directory
+INSTALL_DIR="/usr/local/gradle"
+
+# Create the installation directory if it doesn't exist
+sudo mkdir -p $INSTALL_DIR
+
+# Download Gradle distribution
+echo "Downloading Gradle ${GRADLE_VERSION}..."
+sudo wget $GRADLE_URL
+
+# Unzip the distribution and move it to the installation directory
+echo "Installing Gradle..."
+sudo unzip "gradle-${GRADLE_VERSION}-bin.zip" -d $INSTALL_DIR
+
+# Set up environment variables
+echo "Configuring environment variables..."
+echo "export GRADLE_HOME=$INSTALL_DIR/gradle-${GRADLE_VERSION}" >> ~/.bashrc
+echo "export PATH=\$GRADLE_HOME/bin:\$PATH" >> ~/.bashrc
+
+# Apply the changes to the current shell
+source ~/.bashrc
+
+# Verify the installation
+gradle -v
+
+echo "Gradle installation complete."
