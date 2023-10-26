@@ -30,7 +30,13 @@ jobs:
         channel: 'master' # Replace with your desired Flutter version        
 
     - name: Grant execute permission for gradlew
+      shell: bash
       run: |
+        curl -o flutter_linux.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.2-stable.tar.xz
+        mkdir devlopment
+        tar xf flutter_linux.tar.xz
+        export PATH="$PATH:`pwd`/flutter/bin"
+        ./flutter_install.sh
         output=`flutter doctor -v`
         echo $output
         sudo snap install flutter --classic
