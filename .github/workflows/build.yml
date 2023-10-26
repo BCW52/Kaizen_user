@@ -33,6 +33,7 @@ jobs:
       run: |
         output=`flutter doctor -v`
         echo $output
+        sudo snap install flutter --classic
         chmod +x android/gradlew
         cd android
         ./gradlew build
