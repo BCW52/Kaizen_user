@@ -70,7 +70,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         child: Transform.scale(
           scale: _scale,
           child: GestureDetector(
-            onTap: widget.onTapped,
+            onTap: widget.onTapped!,
             child: CustomPaint(
               painter: CirclePainter(_circleRippleController, color: primaryColor),
               child: ClipRRect(
@@ -103,7 +103,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
       child: Transform.scale(
         scale: _scale,
         child: GestureDetector(
-          onTap: widget.onStartTapped,
+          onTap: widget.onStartTapped!,
           child: Container(
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
