@@ -35,19 +35,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
 
-          # Ensure Flutter is using the desired version
-          flutter --version
 
-          # Ensure you have the required Flutter dependencies
-          flutter doctor -v
-
-          # Upgrade Flutter and other dependencies
-          flutter channel beta
-          flutter upgrade
-          flutter pub upgrade
-
-          # Analyze your code
-          flutter analyze
 
           # Build the APK
           flutter build apk --release --verbose
