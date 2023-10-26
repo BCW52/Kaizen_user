@@ -28,11 +28,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void init() async {
-    try {
-      packageInfo = await PackageInfo.fromPlatform();
-    } catch (e) {
+    packageInfo = await PackageInfo.fromPlatform().catchError((e) {
       toast(e.toString());
-    }
+    });
     setState(() {});
   }
 

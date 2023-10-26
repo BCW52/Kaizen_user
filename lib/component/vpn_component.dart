@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mightyvpn/component/circle_painter.dart';
+import 'package:mightyvpn/main.dart';
 import 'package:mightyvpn/utils/colors.dart';
+import 'package:mightyvpn/utils/enums.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class VpnComponent extends StatefulWidget {
@@ -8,8 +10,7 @@ class VpnComponent extends StatefulWidget {
   final Function()? onStartTapped;
   final Function()? onTapped;
 
-  const VpnComponent({Key? key, this.vpnStatus = false, required this.onStartTapped, required this.onTapped})
-      : super(key: key);
+  const VpnComponent({Key? key, this.vpnStatus = false, required this.onStartTapped, required this.onTapped}) : super(key: key);
 
   @override
   State<VpnComponent> createState() => _VpnComponentState();
@@ -35,8 +36,13 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
       lowerBound: 0.0,
       upperBound: 0.1,
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
+  }
+
+  @override
+  void setState(fn) {
+    if (mounted) super.setState(fn);
   }
 
   @override
@@ -55,7 +61,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     if (_controller != null) {
-      _scale = 1 - (_controller!.value ?? 0.0);
+      _scale = 1 - _controller!.value;
     }
     if (widget.vpnStatus) {
       return Listener(
@@ -68,7 +74,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         child: Transform.scale(
           scale: _scale,
           child: GestureDetector(
-            onTap: widget.onTapped!,
+            onTap: widget.onTapped,
             child: CustomPaint(
               painter: CirclePainter(_circleRippleController, color: primaryColor),
               child: ClipRRect(
@@ -81,41 +87,46 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
                     width: context.width() * 0.45,
                     padding: const EdgeInsets.all(26),
                     decoration: BoxDecoration(shape: BoxShape.circle, gradient: getConnectedGradient()),
-                    child: const Icon(Icons.stop_circle, size: 86, color: Colors.white),
+                    child: const Icon(LineIcons.stop_circle, size: 86, color: Colors.white),
                   ),
                 ),
               ),
             ),
           ),
-        );
-      }
-      return Listener(
-        onPointerDown: (details) {
-          _controller?.forward();
-        },
-        onPointerUp: (details) {
-          _controller?.reverse();
-        },
-        child: Transform.scale(
-          scale: _scale,
-          child: GestureDetector(
-            onTap: widget.onStartTapped!,
-            child: Container(
-              padding: const EdgeInsets.all(32),
-              decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
-              child: Column(
-                children: [
-                  const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
-                  Text(getStatus(), style: boldTextStyle(color: primaryColor, size: 18)),
-                ],
-              ),
+        ),
+      );
+    }
+    return Listener(
+      onPointerDown: (details) {
+        _controller?.forward();
+      },
+      onPointerUp: (details) {
+        _controller?.reverse();
+      },
+      child: Transform.scale(
+        scale: _scale,
+        child: GestureDetector(
+          onTap: widget.onStartTapped,
+          child: Container(
+            padding: const EdgeInsets.all(32),
+            decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
+            child: Column(
+              children: [
+                const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
+                Text(getStatus(vpnStore.vpnStatus != VPNStatus.disconnected), style: boldTextStyle(color: primaryColor, size: 18)),
+              ],
             ),
           ),
-        );
-      }
-    }
+        ),
+      ),
+    );
+  }
 
-  String getStatus() {
-    return widget.vpnStatus ? 'Stop' : 'Start';
+  String getStatus(bool val) {
+    if (val) {
+      return 'Stop';
+    } else {
+      return 'Start';
+    }
   }
 }
