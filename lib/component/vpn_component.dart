@@ -56,7 +56,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     if (_controller != null) {
-      _scale = 1 - (_controller!.value ?? 0.0);
+      _scale = 1 - _controller!.value;
     }
 
     if (widget.vpnStatus) {
@@ -101,25 +101,4 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         _controller?.reverse();
       },
       child: Transform.scale(
-        scale: _scale,
-        child: GestureDetector(
-          onTap: widget.onStartTapped!,
-          child: Container(
-            padding: const EdgeInsets.all(32),
-            decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
-            child: Column(
-              children: [
-                const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
-                Text(getStatus(vpnStore.vpnStatus != VPNStatus.disconnected), style: boldTextStyle(color: primaryColor, size: 18)),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-  }
-
-  String getStatus(bool val) {
-    return val ? 'Stop' : 'Start';
-  }
-}
+        scale:
