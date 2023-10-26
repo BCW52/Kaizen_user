@@ -28,7 +28,7 @@ jobs:
         uses: subosito/flutter-action@v2 # Use the latest version (check for updates)
         with:
           flutter-version: '2.12.0'
-          channel: 'dev'
+          channel: 'beta'
         # Replace with your desired Flutter version
 
       - name: Build APK
