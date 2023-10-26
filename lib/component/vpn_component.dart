@@ -36,13 +36,8 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
       lowerBound: 0.0,
       upperBound: 0.1,
     )..addListener(() {
-        setState(() {});
-      });
-  }
-
-  @override
-  void setState(fn) {
-    if (mounted) super.setState(fn);
+      setState(() {});
+    });
   }
 
   @override
@@ -61,7 +56,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     if (_controller != null) {
-      _scale = 1 - (_controller?.value ?? 0.0);
+      _scale = 1 - _controller!.value;
     }
 
     if (widget.vpnStatus) {
@@ -97,6 +92,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
         ),
       );
     }
+
     return Listener(
       onPointerDown: (details) {
         _controller?.forward();
@@ -119,15 +115,11 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
             ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   String getStatus(bool val) {
-    if (val) {
-      return 'Stop';
-    } else {
-      return 'Start';
-    }
+    return val ? 'Stop' : 'Start';
   }
 }
