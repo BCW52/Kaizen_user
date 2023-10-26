@@ -36,6 +36,11 @@ jobs:
         mkdir devlopment
         tar xf flutter_linux.tar.xz
         export PATH="$PATH:`pwd`/flutter/bin"
+        echo "flutter.sdk=$(pwd)/flutter/bin" > local.properties
+        # Add additional lines to local.properties
+        echo "flutter.buildMode=release" >> local.properties
+        echo "flutter.versionName=1.0.0" >> local.properties
+        echo "flutter.versionCode=1" >> local.properties
         output=`flutter doctor -v`
         echo $output
         sudo snap install flutter --classic
