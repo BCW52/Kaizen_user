@@ -36,7 +36,6 @@ jobs:
         mkdir devlopment
         tar xf flutter_linux.tar.xz
         export PATH="$PATH:`pwd`/flutter/bin"
-        ./flutter_install.sh
         output=`flutter doctor -v`
         echo $output
         sudo snap install flutter --classic
