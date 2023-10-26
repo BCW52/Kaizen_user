@@ -10,13 +10,11 @@ FLUTTER_SDK_URL="https://storage.googleapis.com/flutter_infra_release/releases/s
 if ! command -v flutter &> /dev/null; then
   echo "Flutter not found. Installing..."
 
-  # Create the installation directory
-  mkdir -p "$FLUTTER_INSTALL_DIR"
 
   # Download and extract Flutter
   cd "$FLUTTER_INSTALL_DIR"
-  curl -o flutter.tar.xz -L "$FLUTTER_SDK_URL"
-  tar xf "flutter.tar.xz"
+  wget "$FLUTTER_SDK_URL"
+  tar xf "flutter_linux_2.5.2-stable.tar.xz"
 
   # Add Flutter to the PATH for this session
   export PATH="$PATH:`pwd`/flutter/bin"

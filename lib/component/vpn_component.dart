@@ -81,42 +81,41 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
                     width: context.width() * 0.45,
                     padding: const EdgeInsets.all(26),
                     decoration: BoxDecoration(shape: BoxShape.circle, gradient: getConnectedGradient()),
-                    child: const Icon(LineIcons.stop_circle, size: 86, color: Colors.white),
+                    child: const Icon(Icons.stop_circle, size: 86, color: Colors.white),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      );
-    }
-    return Listener(
-      onPointerDown: (details) {
-        _controller?.forward();
-      },
-      onPointerUp: (details) {
-        _controller?.reverse();
-      },
-      child: Transform.scale(
-        scale: _scale,
-        child: GestureDetector(
-          onTap: widget.onStartTapped!,
-          child: Container(
-            padding: const EdgeInsets.all(32),
-            decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
-            child: Column(
-              children: [
-                const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
-                Text(getStatus(vpnStore.vpnStatus != VPNStatus.disconnected), style: boldTextStyle(color: primaryColor, size: 18)),
-              ],
+        );
+      }
+      return Listener(
+        onPointerDown: (details) {
+          _controller?.forward();
+        },
+        onPointerUp: (details) {
+          _controller?.reverse();
+        },
+        child: Transform.scale(
+          scale: _scale,
+          child: GestureDetector(
+            onTap: widget.onStartTapped!,
+            child: Container(
+              padding: const EdgeInsets.all(32),
+              decoration: BoxDecoration(shape: BoxShape.circle, color: primaryColor.withOpacity(0.1)),
+              child: Column(
+                children: [
+                  const Icon(Icons.power_settings_new, size: 86, color: primaryColor),
+                  Text(getStatus(), style: boldTextStyle(color: primaryColor, size: 18)),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      }
     }
-  }
 
-  String getStatus(bool val) {
-    return val ? 'Stop' : 'Start';
+  String getStatus() {
+    return widget.vpnStatus ? 'Stop' : 'Start';
   }
 }
