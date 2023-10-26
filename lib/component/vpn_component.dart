@@ -61,7 +61,7 @@ class _VpnComponentState extends State<VpnComponent> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     if (_controller != null) {
-      _scale = 1 - _controller.value;
+      _scale = 1 - (_controller?.value ?? 0.0);
     }
 
     if (widget.vpnStatus) {
