@@ -23,27 +23,34 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
+
       - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v4 # Use the latest version (check for updates)
         with:
-          flutter-version: "2.5.2"
+          flutter-version: '2.13.0-0.4.pre' # Replace with your desired Flutter version
 
       - name: Build APK
         run: |
-          cd ${{ github.workspace }}/
-          flutter clean
-          flutter pub get
+          cd ${{ github.workspace }}
+
+          # Ensure Flutter is using the desired version
+          flutter --version
+
+          # Ensure you have the required Flutter dependencies
           flutter doctor -v
-          flutter doctor
-          rm pubspec.lock
+
+          # Upgrade Flutter and other dependencies
           flutter channel beta
           flutter upgrade
-          flutter analyze
           flutter pub upgrade
+
+          # Analyze your code
+          flutter analyze
+
+          # Build the APK
           flutter build apk --release --verbose
 
         working-directory: ${{ github.workspace }}
-
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
