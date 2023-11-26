@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970644724732",
+    "project_id": "mightyvpnapp",
+    "storage_bucket": "mightyvpnapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970644724732:android:0ca5ca9095277cbc2cb079",
+        "android_client_info": {
+          "package_name": "com.mighty.vpn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970644724732-41ukkob1dbpkns8n3bumklgi08nis6pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs2lib9Ztcl_OVcJc2UhpsIXV0NJTgj6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970644724732-41ukkob1dbpkns8n3bumklgi08nis6pq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
