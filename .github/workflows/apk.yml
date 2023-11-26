@@ -25,9 +25,6 @@ jobs:
         sudo sh license
         echo "Flutter is not installed. Installing Flutter..."
         sudo snap install flutter --classic
-
-        flutter doctor
-        flutter run
         source ~/.bashrc
     - name: Build and Sign APK
       run: |
