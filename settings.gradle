@@ -1,3 +1,1 @@
 include ':app', ':vpnLib'
-
-apply from: "$flutterSdkPath/packages/flutter_tools/gradle/app_plugin_loader.gradle"
