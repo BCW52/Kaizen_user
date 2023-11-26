@@ -23,7 +23,7 @@ jobs:
         chmod +x license
         sudo groupadd vagrant
         sudo sh license
-
+        source ~/.bashrc
     - name: Build and Sign APK
       run: |
         flutter build apk
